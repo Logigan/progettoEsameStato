@@ -1,4 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pagMaster.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="EsameStato.index" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="cphBody" runat="server">
+        <div class="header-text">
+            <div class="container">
+                <div class="row">
+                    <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                        data-scroll-reveal="enter left move 10px over 0.6s after 0.4s">
+                        <h1>Segreteria <em>Golden Sports Club</em></h1>
+                        <asp:LinkButton ID="lnkReg2" runat="server">Registrazione</asp:LinkButton><br /><br /> <asp:LinkButton ID="lnkUtenti2" runat="server">Utenti</asp:LinkButton><br /><br /> <asp:LinkButton ID="lnkPrg2" runat="server">Programmi Settimanali</asp:LinkButton><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphIndex" runat="server">
     <footer id="contact-us">
         <div class="container">
@@ -28,7 +42,7 @@
                                         <fieldset>
                                             <asp:Button ID="btnRegistraRapido" runat="server" Text="Invia" OnClick="btnRegistraRapido_Click" />
                                         </fieldset>
-                                        <asp:Label ID="lblMsg" runat="server" Text="Label"></asp:Label>
+                                        <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
                                     </div>
                                 </div>
                             </form>
@@ -37,13 +51,6 @@
                     <!-- ***** Contact Form End ***** -->
                     <div class="right-content col-lg-6 col-md-12 col-sm-12">
                         <h2>Registrazione Rapida <em>Cliente</em></h2>
-                        <ul class="social">
-                            <li><a href="https://fb.com/templatemo"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
-                            <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                        </ul>
                     </div>
                 </div>
             </div>

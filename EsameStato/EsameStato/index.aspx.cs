@@ -19,19 +19,18 @@ namespace EsameStato
         {
             try
             {
-                db.InserisciUtente(txtCognome.Text, txtNome.Text, txtEmail.Text);
-                azzera();
-                lblMsg.Text = "Utente inserito";
+                if (txtCognome.Text != "" && txtNome.Text != "" && txtEmail.Text != "")
+                {
+                    db.InserisciUtente(txtCognome.Text, txtNome.Text, txtEmail.Text);
+                    lblMsg.Text = "Utente inserito";
+                }
+                else
+                    lblMsg.Text = "ERRORE: i campi nome, cognome, email possono risultare incompleti";
             }
             catch (Exception ex)
             {
                 lblMsg.Text = "ERRORE: " + ex.Message;
             }
-        }
-
-        private void azzera()
-        {
-            throw new NotImplementedException();
         }
     }
 }

@@ -1,79 +1,40 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/pagMaster.Master" AutoEventWireup="true" CodeBehind="registrazione.aspx.cs" Inherits="EsameStato.registrazione" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="cphRegistrazione" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="cphBody" runat="server">
+    <div class="header-text">
+         <div class="container">
+            <div class="row">
+               <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
+                     data-scroll-reveal="enter left move 10px over 0.6s after 0.4s">
         <div class="banner">
           <h1>Segreteria</h1>
         </div>
-        <p>Runner Information</p>
         <div class="item">
-          <label for="name">Name<span>*</span></label>
-          <input id="name" type="text" name="name" required/>
-        </div>
-        <div class="item">
-          <label for="email">Email Address<span>*</span></label>
-          <input id="email" type="email" name="email" required/>
+            <asp:Label ID="lblNome" runat="server" Text="Nome"></asp:Label><br />
+            <asp:TextBox ID="txtNome" runat="server"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-          <label for="address">Address<span>*</span></label>
-          <input id="address" type="address" name="address" required/>
+            <asp:Label ID="lblCognome" runat="server" Text="Cognome"></asp:Label><br />
+            <asp:TextBox ID="txtCognome" runat="server"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-          <label for="city">City<span>*</span></label>
-          <input id="city" type="text" name="city" required/>
+            <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label><br />
+            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-          <label for="state">State<span>*</span></label>
-          <input id="state" type="text" name="state" required/>
+            <asp:Label ID="lblAltezza" runat="server" Text="Altezza"></asp:Label><br />
+            <asp:TextBox ID="txtAltezza" runat="server"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-          <label for="zip">Zip<span>*</span></label>
-          <input id="zip" type="text" name="zip" required/>
+          <asp:Label ID="Label1" runat="server" Text="Peso"></asp:Label><br />
+            <asp:TextBox ID="txtPeso" runat="server"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-          <label for="phone">Phone<span>*</span></label>
-          <input id="phone" type="number" name="phone" required/>
+          <asp:Label ID="Label2" runat="server" Text="Percentuale massa grassa"></asp:Label><br />
+           <asp:TextBox ID="txtPercentualeMassaGrassa" runat="server"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-          <label for="bdate">Date of Birth<span>*</span></label>
-          <input id="bdate" type="date" name="bdate" required/>
-          <i class="fas fa-calendar-alt"></i>
+            <asp:Button ID="Button1" runat="server" Text="Invia" OnClick="Button1_Click" />
         </div>
-        <div class="question">
-          <label>Gender</label>
-          <div class="question-answer">
-            <div>
-              <input type="radio" value="none" id="radio_1" name="gender"/>
-              <label for="radio_1" class="radio"><span>Male</span></label>
-            </div>
-            <div>
-              <input  type="radio" value="none" id="radio_2" name="gender"/>
-              <label for="radio_2" class="radio"><span>Female</span></label>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <p>T-Shirt Size</p>
-          <select>
-            <option selected value="" disabled selected></option>
-            <option value="course-type" >Small</option>
-            <option value="short-courses">Medium</option>
-            <option value="featured-courses">Large</option>
-            <option value="undergraduate">Extra Large</option>
-          </select>
-        </div>
-        <div class="question">
-          <label>Choose Race</label>
-          <div class="question-answer">
-            <div>
-              <input type="radio" value="none" id="radio_3" name="race"/>
-              <label for="radio_3" class="radio"><span>5k - $25</span></label>
-            </div>
-            <div>
-              <input  type="radio" value="none" id="radio_4" name="race"/>
-              <label for="radio_4" class="radio"><span>10K - $25</span></label>
-            </div>
-          </div>
-        </div>
-        <div class="btn-block">
-          <button type="submit" href="/">SUBMIT</button>
-        </div>
+        <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
+</div></div></div></div>
 </asp:Content>
