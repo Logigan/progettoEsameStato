@@ -56,7 +56,6 @@ C:\Users\logig\Desktop\Scuola\5 Anno\GPO\Progetto Esame di Stato A.S 2020-2021\p
 C:\Users\logig\Desktop\Scuola\5 Anno\GPO\Progetto Esame di Stato A.S 2020-2021\progettoEsameStato\EsameStato\EsameStato\obj\Debug\EsameStato.csproj.CopyComplete
 C:\Users\logig\Desktop\Scuola\5 Anno\GPO\Progetto Esame di Stato A.S 2020-2021\progettoEsameStato\EsameStato\EsameStato\obj\Debug\EsameStato.dll
 C:\Users\logig\Desktop\Scuola\5 Anno\GPO\Progetto Esame di Stato A.S 2020-2021\progettoEsameStato\EsameStato\EsameStato\obj\Debug\EsameStato.pdb
-C:\Users\logig\Desktop\Scuola\5 Anno\GPO\Progetto Esame di Stato A.S 2020-2021\progettoEsameStato\EsameStato\EsameStato\obj\Debug\EsameStato.csprojAssemblyReference.cache
 C:\Users\a.logigan.0463\Desktop\Progetto\progettoEsameStato\EsameStato\EsameStato\bin\EsameStato.dll.config
 C:\Users\a.logigan.0463\Desktop\Progetto\progettoEsameStato\EsameStato\EsameStato\bin\EsameStato.dll
 C:\Users\a.logigan.0463\Desktop\Progetto\progettoEsameStato\EsameStato\EsameStato\bin\EsameStato.pdb
@@ -116,3 +115,4 @@ C:\Users\a.logigan.0463\Desktop\Progetto\progettoEsameStato\EsameStato\EsameStat
 C:\Users\a.logigan.0463\Desktop\Progetto\progettoEsameStato\EsameStato\EsameStato\obj\Debug\EsameStato.csproj.CopyComplete
 C:\Users\a.logigan.0463\Desktop\Progetto\progettoEsameStato\EsameStato\EsameStato\obj\Debug\EsameStato.dll
 C:\Users\a.logigan.0463\Desktop\Progetto\progettoEsameStato\EsameStato\EsameStato\obj\Debug\EsameStato.pdb
+C:\Users\logig\Desktop\Scuola\5 Anno\GPO\Progetto Esame di Stato A.S 2020-2021\progettoEsameStato\EsameStato\EsameStato\obj\Debug\EsameStato.csprojAssemblyReference.cache

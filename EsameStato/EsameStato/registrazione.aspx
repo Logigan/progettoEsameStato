@@ -9,28 +9,28 @@
           <h1>Segreteria</h1>
         </div>
         <div class="item">
-            <asp:Label ID="lblNome" runat="server" Text="Nome"></asp:Label><br />
+            <asp:Label ID="lblNome" runat="server" Text="Nome "></asp:Label>
             <asp:TextBox ID="txtNome" runat="server"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-            <asp:Label ID="lblCognome" runat="server" Text="Cognome"></asp:Label><br />
+            <asp:Label ID="lblCognome" runat="server" Text="Cognome "></asp:Label>
             <asp:TextBox ID="txtCognome" runat="server"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-            <asp:Label ID="lblEmail" runat="server" Text="Email"></asp:Label><br />
-            <asp:TextBox ID="txtEmail" runat="server"></asp:TextBox><br /><br />
+            <asp:Label ID="lblEmail" runat="server" Text="Email "></asp:Label>
+            <asp:TextBox ID="txtEmail" runat="server" type="email"></asp:TextBox><br /><br />
         </div>
         <div class="item">
-            <asp:Label ID="lblAltezza" runat="server" Text="Altezza"></asp:Label><br />
-            <asp:TextBox ID="txtAltezza" runat="server"></asp:TextBox><br /><br />
+            <asp:Label ID="Label1" runat="server" Text="Altezza (cm) "></asp:Label>
+            <asp:DropDownList ID="ddlAltezza" runat="server"></asp:DropDownList><br /><br />
         </div>
         <div class="item">
-          <asp:Label ID="Label1" runat="server" Text="Peso"></asp:Label><br />
-            <asp:TextBox ID="txtPeso" runat="server"></asp:TextBox><br /><br />
+            <asp:Label ID="Label2" runat="server" Text="Peso (kg) "></asp:Label>
+          <asp:DropDownList ID="ddlPeso" runat="server"></asp:DropDownList><br /><br />
         </div>
         <div class="item">
-          <asp:Label ID="Label2" runat="server" Text="Percentuale massa grassa"></asp:Label><br />
-           <asp:TextBox ID="txtPercentualeMassaGrassa" runat="server"></asp:TextBox><br /><br />
+            <asp:Label ID="Label3" runat="server" Text="Percentuale Massa grassa (%) "></asp:Label>
+          <asp:DropDownList ID="ddlPercentualeMassaGrassa" runat="server"></asp:DropDownList><br /><br />
         </div>
         <div class="item">
             <asp:Button ID="Button1" runat="server" Text="Invia" OnClick="Button1_Click" />

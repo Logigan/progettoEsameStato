@@ -7,11 +7,13 @@
 // </generato automaticamente>
 //------------------------------------------------------------------------------
 
-namespace EsameStato {
-    
-    
-    public partial class index {
-        
+namespace EsameStato
+{
+
+
+    public partial class index
+    {
+
         /// <summary>
         /// Controllo lnkReg2.
         /// </summary>
@@ -20,7 +22,7 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkReg2;
-        
+
         /// <summary>
         /// Controllo lnkUtenti2.
         /// </summary>
@@ -29,16 +31,16 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkUtenti2;
-        
+
         /// <summary>
-        /// Controllo lnkPrg2.
+        /// Controllo lnkSrv.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkPrg2;
-        
+        protected global::System.Web.UI.WebControls.LinkButton lnkSrv;
+
         /// <summary>
         /// Controllo txtNome.
         /// </summary>
@@ -47,7 +49,7 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNome;
-        
+
         /// <summary>
         /// Controllo txtCognome.
         /// </summary>
@@ -56,7 +58,7 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtCognome;
-        
+
         /// <summary>
         /// Controllo txtEmail.
         /// </summary>
@@ -65,7 +67,7 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
-        
+
         /// <summary>
         /// Controllo btnRegistraRapido.
         /// </summary>
@@ -74,7 +76,7 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnRegistraRapido;
-        
+
         /// <summary>
         /// Controllo lblMsg.
         /// </summary>

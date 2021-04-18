@@ -105,6 +105,8 @@
     <Content Include="index.aspx" />
     <Content Include="registrazione.aspx" />
     <Content Include="pagMaster.Master" />
+    <Content Include="servizi.aspx" />
+    <Content Include="utenti.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -132,6 +134,20 @@
     <Compile Include="registrazione.aspx.designer.cs">
       <DependentUpon>registrazione.aspx</DependentUpon>
     </Compile>
+    <Compile Include="servizi.aspx.cs">
+      <DependentUpon>servizi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="servizi.aspx.designer.cs">
+      <DependentUpon>servizi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="utenti.aspx.cs">
+      <DependentUpon>utenti.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="utenti.aspx.designer.cs">
+      <DependentUpon>utenti.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\fonts\Flaticon.woff" />
@@ -157,7 +173,9 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\schede\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

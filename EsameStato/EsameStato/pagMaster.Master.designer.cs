@@ -7,11 +7,13 @@
 // </generato automaticamente>
 //------------------------------------------------------------------------------
 
-namespace EsameStato {
-    
-    
-    public partial class pagMaster {
-        
+namespace EsameStato
+{
+
+
+    public partial class pagMaster
+    {
+
         /// <summary>
         /// Controllo form1.
         /// </summary>
@@ -20,7 +22,7 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
+
         /// <summary>
         /// Controllo lnkReg.
         /// </summary>
@@ -29,7 +31,7 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkReg;
-        
+
         /// <summary>
         /// Controllo lnkUtenti.
         /// </summary>
@@ -38,16 +40,16 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkUtenti;
-        
+
         /// <summary>
-        /// Controllo lnkPrg.
+        /// Controllo lnkSrv.
         /// </summary>
         /// <remarks>
         /// Campo generato automaticamente.
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkPrg;
-        
+        protected global::System.Web.UI.WebControls.LinkButton lnkSrv;
+
         /// <summary>
         /// Controllo cphBody.
         /// </summary>
@@ -56,7 +58,7 @@ namespace EsameStato {
         /// Per la modifica, spostare la dichiarazione di campo dal file di progettazione al file code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder cphBody;
-        
+
         /// <summary>
         /// Controllo cphIndex.
         /// </summary>

@@ -51,15 +51,15 @@ https://templatemo.com/tm-540-lava-landing-page
                 <div class="col-12">
                     <nav class="main-nav">
                         <!-- ***** Logo Start ***** -->
-                        <a href="index.html" class="logo">
+                        <a href="index.aspx" class="logo">
                             Golden Sports Club
                         </a>
                         <!-- ***** Logo End ***** -->
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><asp:LinkButton ID="lnkReg" runat="server" OnClick="lnkReg_Click">Registrazione</asp:LinkButton></li>
-                            <li class="scroll-to-section"><asp:LinkButton ID="lnkUtenti" runat="server">Utenti</asp:LinkButton></li>
-                            <li class="scroll-to-section"><asp:LinkButton ID="lnkPrg" runat="server">Programmi Settimanali</asp:LinkButton>
+                            <li class="scroll-to-section"><asp:LinkButton ID="lnkUtenti" runat="server" OnClick="lnkUtenti_Click">Utenti</asp:LinkButton></li>
+                            <li class="scroll-to-section"><asp:LinkButton ID="lnkSrv" runat="server" OnClick="lnkSrv_Click">Servizi</asp:LinkButton>
                             </li>
                         </ul>
                         <a class='menu-trigger'>

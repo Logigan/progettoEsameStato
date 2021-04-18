@@ -18,5 +18,15 @@ namespace EsameStato
         {
             Response.Redirect("registrazione.aspx");
         }
+
+        protected void lnkSrv_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("servizi.aspx");
+        }
+
+        protected void lnkUtenti_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("utenti.aspx");
+        }
     }
 }

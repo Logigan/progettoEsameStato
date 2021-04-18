@@ -6,7 +6,7 @@
                     <div class="left-text col-lg-6 col-md-12 col-sm-12 col-xs-12"
                         data-scroll-reveal="enter left move 10px over 0.6s after 0.4s">
                         <h1>Segreteria <em>Golden Sports Club</em></h1>
-                        <asp:LinkButton ID="lnkReg2" runat="server">Registrazione</asp:LinkButton><br /><br /> <asp:LinkButton ID="lnkUtenti2" runat="server">Utenti</asp:LinkButton><br /><br /> <asp:LinkButton ID="lnkPrg2" runat="server">Programmi Settimanali</asp:LinkButton><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+                        <asp:LinkButton ID="lnkReg2" runat="server" OnClick="lnkReg2_Click">Registrazione</asp:LinkButton><br /><br /> <asp:LinkButton ID="lnkUtenti2" runat="server" OnClick="lnkUtenti2_Click">Utenti</asp:LinkButton><br /><br /> <asp:LinkButton ID="lnkSrv" runat="server" OnClick="lnkSrv2_Click">Servizi</asp:LinkButton><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 
                     </div>
                 </div>
