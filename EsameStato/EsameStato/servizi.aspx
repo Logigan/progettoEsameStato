@@ -11,7 +11,6 @@
                             <asp:BoundField DataField="tipologia" HeaderText="Tipologia" />
                             <asp:BoundField DataField="prezzo" HeaderText="Prezzo"/>
                             <asp:BoundField DataField="percorso" HeaderText="Percorso" />
-                            <asp:ButtonField ButtonType="Button" CommandName="aggiorna" Text="Aggiorna" HeaderText="Aggiorna" ControlStyle-CssClass="btn btn-primary" />
                             <asp:ButtonField ButtonType="Button" CommandName="elimina" Text="Elimina" HeaderText="Elimina" ControlStyle-CssClass="btn btn-warning" />
                         </Columns>
                     </asp:GridView>

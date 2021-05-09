@@ -5,6 +5,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.IO;
 
 namespace EsameStato
 {
@@ -49,6 +50,7 @@ namespace EsameStato
                             fup.SaveAs(Server.MapPath(percorso) + fup.FileName);
                             db.InserisciServizio(tipologia, prezzo, percorsoDb);
                             lblMsg.Text = "Servizio inserito";
+                            popolaDgv();
                         }
                         else
                             lblMsg.Text = "ERRORE: i campi tipologia o prezzo possno risultare incompleti";
@@ -70,29 +72,28 @@ namespace EsameStato
         {
             int index;
             string id;
-            /*GridViewRow row;*/
             index = Convert.ToInt32(e.CommandArgument);
-            /*row = dgv.Rows[index];*/
             string percorso = dgv.Rows[index].Cells[3].Text;
             id = dgv.DataKeys[index].Value.ToString();
-            Session["idServizio"] = id;
-            if (e.CommandName == "aggiorna")
-                Response.Redirect("aggiornaServizio.aspx", false);
-            else
+            if (e.CommandName == "elimina")
             {
-                if (e.CommandName == "elimina")
+                try
                 {
-                    try
-                    {
-                        db.EliminaServizio(Convert.ToInt32(id));
-                        popolaDgv();
-                    }
-                    catch (Exception ex)
-                    {
-                        lblMsg.Text = "ERRORE: " + ex.Message;
-                    }
+                    db.EliminaServizio(Convert.ToInt32(id));
+                    eliminaFile(percorso);
+                    popolaDgv();
+                }
+                catch (Exception ex)
+                {
+                    lblMsg.Text = "ERRORE: " + ex.Message;
                 }
             }
+        }
+
+        private void eliminaFile(string percorso)
+        {
+            string map = Convert.ToString(Server.MapPath(percorso));
+            File.Delete(map);
         }
     }
 }

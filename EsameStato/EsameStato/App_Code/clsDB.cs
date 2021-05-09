@@ -32,6 +32,16 @@ namespace EsameStato
             return res.ToString();
         }
 
+        internal string cercaUtente(string id)
+        {
+            string username;
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT email FROM Clienti WHERE idCliente=@id";
+            cmd.Parameters.AddWithValue("@id", id);
+            username =Convert.ToString(ado.EseguiScalar(cmd));
+            return username;
+        }
+
         internal object leggiServizi()
         {
             DataTable dt = new DataTable();
@@ -54,6 +64,20 @@ namespace EsameStato
             else
                 esiste = true;
             return esiste;
+        }
+
+        internal void aggiornaUtente(string cognome, string nome, int a, float pm, float p, string email)
+        {
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "UPDATE Clienti ";
+            cmd.CommandText += "SET nome=@nome, cognome=@cognome, altezza=@altezza, peso=@peso, pMassaGrassa=@pMassaGrassa WHERE email=@email";
+            cmd.Parameters.AddWithValue("@cognome", cognome);
+            cmd.Parameters.AddWithValue("@nome", nome);
+            cmd.Parameters.AddWithValue("@altezza", a);
+            cmd.Parameters.AddWithValue("@peso", p);
+            cmd.Parameters.AddWithValue("@pMassaGrassa", pm);
+            cmd.Parameters.AddWithValue("@email", email);
+            ado.EseguiNonQuery(cmd);
         }
 
         public string sha256(string pwd)
