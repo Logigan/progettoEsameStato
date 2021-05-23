@@ -5,20 +5,34 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Threading;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace EsameStato
 {
     public partial class aggiornaUtente : System.Web.UI.Page
     {
-        clsDB db;
         string email;
+        string uri = "http://localhost:55947/api/";
         protected void Page_Load(object sender, EventArgs e)
         {
-            db = new clsDB("App_Data\\dbGoldenClub.mdf");
             string id = Session["idUtente"].ToString();
-            email=db.cercaUtente(id);
-            lblUsername.Text = email;
-            caricaDdl();
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(uri);
+            var responseTask = client.GetAsync("clienti?idUtente=" + id);
+            responseTask.Wait();
+            var result = responseTask.Result;
+            if(result.IsSuccessStatusCode)
+            {
+                var readTask = result.Content.ReadAsStringAsync();
+                readTask.Wait();
+                clsClienti c = JsonConvert.DeserializeObject<clsClienti>(readTask.Result);
+                email = c.email;
+                lblUsername.Text = email;
+                caricaDdl();
+            }
+            else
+                lblMsg.Text = result.StatusCode.ToString();
         }
 
         private void caricaDdl()
@@ -46,12 +60,28 @@ namespace EsameStato
                     string nome = txtNome.Text;
                     string cognome = txtCognome.Text;
                     int a;
-                    float pm, p;
+                    int pm, p;
+                    string id = Session["idUtente"].ToString();
                     a = Convert.ToInt32(ddlAltezza.Text);
-                    pm = Convert.ToSingle(ddlPercentualeMassaGrassa.Text);
-                    p = Convert.ToSingle(ddlPeso.Text);
-                    db.aggiornaUtente(cognome, nome, a, pm, p,email);
-                    Response.Redirect("aggiornamentoSuccesso.aspx", false);
+                    pm = Convert.ToInt32(ddlPercentualeMassaGrassa.Text);
+                    p = Convert.ToInt32(ddlPeso.Text);
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri(uri);
+                    clsClienti cliente = new clsClienti();
+                    cliente.nome = nome;
+                    cliente.idCliente = Convert.ToInt32(id);
+                    cliente.cognome = cognome;
+                    cliente.altezza = a;
+                    cliente.peso = p;
+                    cliente.pMassaGrassa = pm;
+                    var postTask = client.PostAsJsonAsync<clsClienti>("clienti", cliente);
+                    var result = postTask.Result;
+                    if(result.IsSuccessStatusCode)
+                    {
+                        var readTask = result.Content.ReadAsStringAsync();
+                        readTask.Wait();
+                        Response.Redirect("aggiornamentoSuccesso.aspx", false);
+                    }
                 }
                 else
                     lblMsg.Text = "ERRORE: i campi nome, cognome, email possono risultare incompleti";

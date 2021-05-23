@@ -113,10 +113,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\clientiController.cs" />
+    <Compile Include="Controllers\passwordController.cs" />
+    <Compile Include="Controllers\serviziController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\clsClienti.cs" />
+    <Compile Include="Models\clsPwd.cs" />
+    <Compile Include="Models\clsServizi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

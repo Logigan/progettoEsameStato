@@ -66,17 +66,17 @@ namespace WebService
             return esiste;
         }
 
-        internal void aggiornaUtente(string cognome, string nome, int a, float pm, float p, string email)
+        internal void aggiornaUtente(string cognome, string nome, int a,int pm, int p, int idUtente)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "UPDATE Clienti ";
-            cmd.CommandText += "SET nome=@nome, cognome=@cognome, altezza=@altezza, peso=@peso, pMassaGrassa=@pMassaGrassa WHERE email=@email";
+            cmd.CommandText += "SET nome=@nome, cognome=@cognome, altezza=@altezza, peso=@peso, pMassaGrassa=@pMassaGrassa WHERE idCliente=@idUtente";
             cmd.Parameters.AddWithValue("@cognome", cognome);
             cmd.Parameters.AddWithValue("@nome", nome);
             cmd.Parameters.AddWithValue("@altezza", a);
             cmd.Parameters.AddWithValue("@peso", p);
             cmd.Parameters.AddWithValue("@pMassaGrassa", pm);
-            cmd.Parameters.AddWithValue("@email", email);
+            cmd.Parameters.AddWithValue("@idUtente", idUtente);
             ado.EseguiNonQuery(cmd);
         }
 
@@ -137,7 +137,7 @@ namespace WebService
             return dt;
         }
 
-        internal void InserisciUtenteEInfo(string cognome, string nome, string email, int a, float pm, float p,string pwd)
+        internal void InserisciUtenteEInfo(string cognome, string nome, string email, int a, int pm, int p,string pwd)
         {
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = "INSERT INTO Clienti(nome, cognome, email,pwd, altezza, peso, pMassaGrassa) ";

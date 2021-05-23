@@ -6,15 +6,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Text;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace EsameStato
 {
     public partial class index : System.Web.UI.Page
     {
-        clsDB db;
+        string uri = "http://localhost:55947/api/";
         protected void Page_Load(object sender, EventArgs e)
         {
-            db = new clsDB("App_Data\\dbGoldenClub.mdf");
+
         }
 
         protected void btnRegistraRapido_Click(object sender, EventArgs e)
@@ -22,20 +24,73 @@ namespace EsameStato
             try
             {
                 if (txtCognome.Text != "" && txtNome.Text != "" && txtEmail.Text != "")
-                {                 
-                    if (!db.CercaMail(txtEmail.Text))
+                {
+                    HttpClient client = new HttpClient();
+                    client.BaseAddress = new Uri(uri);
+                    //HTTP GET
+                    var responseTask = client.GetAsync("clienti?Email=" + txtEmail.Text);
+                    responseTask.Wait();
+                    var result = responseTask.Result;
+                    if (result.IsSuccessStatusCode)
                     {
-                        string pwd = db.creaPwd();
-                        string cryptoPwd = db.sha256(pwd);
-                        string email = txtEmail.Text;
-                        string nome = txtNome.Text;
-                        string cognome = txtCognome.Text;
-                        db.InserisciUtente(cognome, nome, email, cryptoPwd);
-                        inviaMailPwd(nome, cognome, email, pwd);
-                        lblMsg.Text = "Utente inserito";
+                        var readTask = result.Content.ReadAsStringAsync();
+                        readTask.Wait();
+                        bool esiste = Convert.ToBoolean(readTask.Result);
+                        if(!esiste)
+                        {
+                            responseTask = client.GetAsync("password");
+                            responseTask.Wait();
+                            result = responseTask.Result;
+                            if(result.IsSuccessStatusCode)
+                            {
+                                readTask = result.Content.ReadAsStringAsync();
+                                readTask.Wait();
+                                var pwdJson = readTask.Result;
+                                clsPwd p = JsonConvert.DeserializeObject<clsPwd>(pwdJson);
+                                clsPwd pass = new clsPwd();
+                                string passChiara = p.pwd;
+                                pass.pwd = p.pwd;
+                                var postTask = client.PostAsJsonAsync<clsPwd>("password", pass);
+                                postTask.Wait();
+                                result = postTask.Result;
+                                if (result.IsSuccessStatusCode)
+                                {
+                                    readTask = result.Content.ReadAsStringAsync();
+                                    readTask.Wait();
+                                    pwdJson = readTask.Result;
+                                    p = JsonConvert.DeserializeObject<clsPwd>(pwdJson);
+                                    string cryptoPwd = p.pwd;
+                                    clsClienti cliente = new clsClienti();
+                                    string email = txtEmail.Text;
+                                    string nome = txtNome.Text;
+                                    string cognome = txtCognome.Text;
+                                    cliente.nome = nome;
+                                    cliente.cognome = cognome;
+                                    cliente.email = email;
+                                    cliente.pwd = cryptoPwd;
+                                    postTask = client.PostAsJsonAsync<clsClienti>("clienti", cliente);
+                                    result = postTask.Result;
+                                    if (result.IsSuccessStatusCode)
+                                    {
+                                        readTask = result.Content.ReadAsStringAsync();
+                                        readTask.Wait();
+                                        lblMsg.Text = "Cliente inserito con successo!";
+                                        inviaMailPwd(nome, cognome, email, passChiara);
+                                    }
+                                    else
+                                        lblMsg.Text = result.StatusCode.ToString();
+                                }
+                                else
+                                    lblMsg.Text = result.StatusCode.ToString();
+                            }
+                            else
+                                lblMsg.Text = result.StatusCode.ToString();
+                        }
+                        else
+                            lblMsg.Text = "ERRORE: account già esistente con questa mail";
                     }
                     else
-                        lblMsg.Text = "ERRORE: account già esistente con questa mail";
+                       lblMsg.Text = result.StatusCode.ToString();
                 }
                 else
                     lblMsg.Text = "ERRORE: i campi nome, cognome, email possono risultare incompleti";

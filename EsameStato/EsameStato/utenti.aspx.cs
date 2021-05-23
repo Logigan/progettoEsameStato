@@ -13,13 +13,10 @@ namespace EsameStato
 {
     public partial class utenti : System.Web.UI.Page
     {
-        clsDB db;
         string uri = "http://localhost:55947/api/";
         protected void Page_Load(object sender, EventArgs e)
         {
-            db = new clsDB("App_Data\\dbGoldenClub.mdf");
-            popolaDgv();
-            
+            popolaDgv();            
         }
 
         private void popolaDgv()
@@ -54,9 +51,18 @@ namespace EsameStato
                         riga["nome"] = cliente.nome;
                         riga["cognome"] = cliente.cognome;
                         riga["email"] = cliente.email;
-                        riga["altezza"] = cliente.altezza;
-                        riga["peso"] = cliente.peso;
-                        riga["pMassaGrassa"] = cliente.pMassaGrassa;
+                        if (cliente.altezza == 0 && cliente.peso == 0 && cliente.pMassaGrassa==0)
+                        {
+                            riga["altezza"] = "";
+                            riga["peso"] = "";
+                            riga["pMassaGrassa"] = "";
+                        }
+                        else
+                        {
+                            riga["altezza"] = cliente.altezza;
+                            riga["peso"] = cliente.peso;
+                            riga["pMassaGrassa"] = cliente.pMassaGrassa;
+                        }
                         dt.Rows.Add(riga);
                     }
                     dgv.DataSource = dt;
@@ -111,7 +117,7 @@ namespace EsameStato
                     //leggo eventuale risposta
                     //var readTask = result.Content.ReadAsStringAsync();
                     //readTask.Wait();
-                    lblMsg.Text = "Record Eleminato";
+                    lblMsg.Text = "Cliente Eliminato";
                 }
                 else
                     lblMsg.Text = result.StatusCode.ToString();

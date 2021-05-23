@@ -6,15 +6,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.IO;
+using System.Net.Http;
+using System.Data;
 
 namespace EsameStato
 {
     public partial class servizi : System.Web.UI.Page
     {
-        clsDB db;
+        string uri = "http://localhost:55947/api/";
         protected void Page_Load(object sender, EventArgs e)
         {
-            db = new clsDB("App_Data\\dbGoldenClub.mdf");
             popolaDgv();
         }
 
@@ -22,8 +23,34 @@ namespace EsameStato
         {
             try
             {
-                dgv.DataSource = db.leggiServizi();
-                dgv.DataBind();
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(uri);
+                var responseTask = client.GetAsync("servizi");
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    var readTask = result.Content.ReadAsAsync<clsServizi[]>();
+                    readTask.Wait();
+                    var servizi = readTask.Result;
+                    DataTable dt = new DataTable();
+                    DataRow riga;
+                    dt.Columns.Add("idServizio");
+                    dt.Columns.Add("tipologia");
+                    dt.Columns.Add("prezzo");
+                    dt.Columns.Add("percorso");
+                    foreach(var servizio in servizi)
+                    {
+                        riga = dt.NewRow();
+                        riga["idServizio"] = servizio.idServizio;
+                        riga["tipologia"] = servizio.tipologia;
+                        riga["prezzo"] = servizio.prezzo;
+                        riga["percorso"] = servizio.percorso;
+                        dt.Rows.Add(riga);
+                    }
+                    dgv.DataSource = dt;
+                    dgv.DataBind();
+                }
             }
             catch (Exception ex)
             {
@@ -47,10 +74,22 @@ namespace EsameStato
                             float prezzo;
                             prezzo = float.Parse(txtPrezzo.Text);
                             tipologia = Convert.ToString(txtTipologia.Text);
-                            fup.SaveAs(Server.MapPath(percorso) + fup.FileName);
-                            db.InserisciServizio(tipologia, prezzo, percorsoDb);
-                            lblMsg.Text = "Servizio inserito";
-                            popolaDgv();
+                            clsServizi servizio = new clsServizi();
+                            servizio.tipologia = tipologia;
+                            servizio.prezzo = prezzo;
+                            servizio.percorso = percorsoDb;
+                            HttpClient client = new HttpClient();
+                            client.BaseAddress = new Uri(uri);
+                            var postTask = client.PostAsJsonAsync<clsServizi>("servizi", servizio);
+                            var result = postTask.Result;
+                            if(result.IsSuccessStatusCode)
+                            {
+                                var readTask = result.Content.ReadAsStringAsync();
+                                readTask.Wait();
+                                fup.SaveAs(Server.MapPath(percorso) + fup.FileName);
+                                lblMsg.Text = "Servizio inserito";
+                                popolaDgv();
+                            }
                         }
                         else
                             lblMsg.Text = "ERRORE: i campi tipologia o prezzo possno risultare incompleti";
@@ -79,7 +118,7 @@ namespace EsameStato
             {
                 try
                 {
-                    db.EliminaServizio(Convert.ToInt32(id));
+                    eliminaInDb(Convert.ToInt32(id));
                     eliminaFile(percorso);
                     popolaDgv();
                 }
@@ -87,6 +126,32 @@ namespace EsameStato
                 {
                     lblMsg.Text = "ERRORE: " + ex.Message;
                 }
+            }
+        }
+
+        private void eliminaInDb(int id)
+        {
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.BaseAddress = new Uri(uri);
+                //HTTP GET
+                var responseTask = client.DeleteAsync("servizi?idServizio=" + id.ToString());
+                responseTask.Wait();
+                var result = responseTask.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    //leggo eventuale risposta
+                    //var readTask = result.Content.ReadAsStringAsync();
+                    //readTask.Wait();
+                    lblMsg.Text = "Servizio Eliminato";
+                }
+                else
+                    lblMsg.Text = result.StatusCode.ToString();
+            }
+            catch (Exception ex)
+            {
+                lblMsg.Text = "Errore: " + ex.Message;
             }
         }
 

@@ -135,9 +135,9 @@
     <Compile Include="aggiornaUtente.aspx.designer.cs">
       <DependentUpon>aggiornaUtente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="App_Code\ADOSQLServer2017.cs" />
     <Compile Include="App_Code\clsClienti.cs" />
-    <Compile Include="App_Code\clsDB.cs" />
+    <Compile Include="App_Code\clsPwd.cs" />
+    <Compile Include="App_Code\clsServizi.cs" />
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

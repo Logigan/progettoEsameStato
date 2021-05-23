@@ -9,7 +9,7 @@
                         <Columns>
                             <asp:BoundField DataField="idServizio" HeaderText="idServizio" visible="false"/>
                             <asp:BoundField DataField="tipologia" HeaderText="Tipologia" />
-                            <asp:BoundField DataField="prezzo" HeaderText="Prezzo"/>
+                            <asp:BoundField DataField="prezzo" HeaderText="Prezzo (€)"/>
                             <asp:BoundField DataField="percorso" HeaderText="Percorso" />
                             <asp:ButtonField ButtonType="Button" CommandName="elimina" Text="Elimina" HeaderText="Elimina" ControlStyle-CssClass="btn btn-warning" />
                         </Columns>
@@ -34,7 +34,7 @@
                                     </div>
                                     <div class="col-md-6 col-sm-12">
                                         <fieldset>
-                                            <asp:TextBox ID="txtPrezzo" runat="server" placeholder="Prezzo"></asp:TextBox>
+                                            <asp:TextBox ID="txtPrezzo" runat="server" placeholder="Prezzo (€)"></asp:TextBox>
                                         </fieldset>
                                     </div>
                                     <div class="col-lg-12">
